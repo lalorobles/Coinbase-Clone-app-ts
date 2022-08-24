@@ -10,11 +10,13 @@ import Portfolio from '../screens/Portfolio';
 import Prices from '../screens/Prices';
 import Settings from '../screens/Settings';
 
+import TabBar from '../components/TabBar';
+
 const TabBarNavigator = createBottomTabNavigator();
 
 const TabNavigator = () => {
     return (
-        <TabBarNavigator.Navigator>
+        <TabBarNavigator.Navigator tabBar={(props) => <TabBar {...props} />}>
             <TabBarNavigator.Screen name="Home" component={Home} />
             <TabBarNavigator.Screen name="Portfolio" component={Portfolio} />
             <TabBarNavigator.Screen name="Actions" component={Actions} />
