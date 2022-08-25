@@ -2,7 +2,25 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView, Image } from 'react-n
 import Colors from '../constants/Colors';
 import CbButton from '../components/CbButton';
 
+import { WatchlistState } from '../store/reducers/watchlist';
+import { useSelector, useDispatch } from 'react-redux';
+import * as watchlistActions from '../store/actions/watchlist';
+import { useEffect } from 'react';
+
 export default function App() {
+    const dispatch = useDispatch();
+
+    const loadData = () => {
+        try {
+            dispatch(watchlistActions.fetchCoinData());
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        loadData();
+    }, []);
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
